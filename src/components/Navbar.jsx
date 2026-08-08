@@ -15,6 +15,7 @@ const NavLink = ({ text, active = false, onClick }) => (
 
 export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProducts, onContacts }) {
   const [pulse, setPulse] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     if (cartCount > 0) {
@@ -23,6 +24,11 @@ export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProdu
       return () => clearTimeout(t)
     }
   }, [cartCount])
+
+  const go = (fn) => () => {
+    setMenuOpen(false)
+    fn()
+  }
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-10 py-6 md:py-8 w-full pointer-events-none">
@@ -42,7 +48,7 @@ export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProdu
         </div>
       </div>
 
-      {/* links */}
+      {/* links — desktop */}
       <div className="hidden md:flex gap-12 pointer-events-auto">
         <NavLink text="Products" active onClick={onProducts} />
         <NavLink text="Customize" onClick={onCustomize} />
@@ -50,7 +56,7 @@ export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProdu
       </div>
 
       {/* icons */}
-      <div className="flex items-center gap-6 text-white pointer-events-auto pr-2 md:pr-0">
+      <div className="flex items-center gap-5 md:gap-6 text-white pointer-events-auto pr-1 md:pr-0">
         <button className="hover:text-brand-accent transition-colors interactive" onMouseEnter={playHover} aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
             <path
@@ -81,7 +87,38 @@ export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProdu
             />
           </svg>
         </button>
+        {/* hamburger — mobile only */}
+        <button
+          onClick={() => setMenuOpen((o) => !o)}
+          onMouseEnter={playHover}
+          className="md:hidden hover:text-brand-accent transition-colors interactive"
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            {menuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            )}
+          </svg>
+        </button>
       </div>
+
+      {/* mobile dropdown menu */}
+      {menuOpen && (
+        <div className="md:hidden absolute top-full left-4 right-4 mt-2 rounded-lg border border-white/10 bg-brand-dark/95 backdrop-blur-xl p-4 flex flex-col gap-1 pointer-events-auto animate-[fadeIn_0.2s_ease] shadow-2xl">
+          <button onClick={go(onProducts)} className="text-left px-4 py-3 text-white text-sm font-medium tracking-wide hover:bg-white/5 rounded-md interactive">
+            Products
+          </button>
+          <button onClick={go(onCustomize)} className="text-left px-4 py-3 text-white text-sm font-medium tracking-wide hover:bg-white/5 rounded-md interactive">
+            Customize
+          </button>
+          <button onClick={go(onContacts)} className="text-left px-4 py-3 text-white text-sm font-medium tracking-wide hover:bg-white/5 rounded-md interactive">
+            Contact
+          </button>
+        </div>
+      )}
     </nav>
   )
 }

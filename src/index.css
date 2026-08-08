@@ -16,6 +16,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Mobile-safe viewport height: 100vh over-measures on iOS Safari (URL bar +
+   bottom toolbar), which pushes snap pages behind the browser chrome. 100dvh
+   tracks the actual visible area; the 100vh line is the older-browser fallback. */
+.viewport-height {
+  height: 100vh;
+  height: 100dvh;
+}
+
 /* ---- custom cursor (src/components/CursorBoot.jsx) ---- */
 /* hide the native pointer on fine-pointer devices; the dot+ring replaces it */
 @media (pointer: fine) {

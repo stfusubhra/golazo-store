@@ -167,7 +167,7 @@ function HeroSection({ product, onPrev, onNext, onAddToCart, scrollRef }) {
         <div className="md:hidden w-full h-[22vh] shrink-0" />
 
         <div className="flex flex-col gap-2 w-full md:w-auto text-center md:text-left pointer-events-auto items-center md:items-start">
-          <div ref={priceRef} key={product.id} className="font-sans text-6xl md:text-5xl font-light tracking-wide drop-shadow-2xl" style={{ color: product.accentColor }}>
+          <div ref={priceRef} key={product.id} className="font-sans text-4xl md:text-5xl font-light tracking-wide drop-shadow-2xl" style={{ color: product.accentColor }}>
             ${product.price}
           </div>
           <div className="text-gray-400 text-xs tracking-wider uppercase font-medium flex items-center gap-2">
@@ -239,7 +239,7 @@ function EliteTouchSection() {
   return (
     <section
       data-stage="elite"
-      className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 py-20 pointer-events-none snap-start overflow-hidden"
+      className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 py-10 md:py-20 pointer-events-none snap-start overflow-hidden"
     >
       {/* text lives on the LEFT half — the ball spins on the right */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
@@ -248,19 +248,19 @@ function EliteTouchSection() {
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             PERFORMANCE METRICS
           </div>
-          <h2 className="font-display text-5xl md:text-7xl text-white leading-[0.9] tracking-tight">
+          <h2 className="font-display text-4xl md:text-7xl text-white leading-[0.9] tracking-tight">
             ELITE
             <br />
             TOUCH
           </h2>
         </div>
         {/* the 32-panel text and the percentage bars sit SIDE BY SIDE */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-8 sm:gap-12 items-start">
-          <div className="space-y-8 flex-1 min-w-0">
+        <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
+          <div className="space-y-6 md:space-y-8 flex-1 min-w-0">
             <MetricStat value="110" unit=" KM/H" label="Shot Speed" desc="Struck clean, the classic 32-panel tops a century of pace without deviating a centimetre." delay={200} />
             <MetricStat value="68.5" unit=" CM" label="Circumference" desc="Regulation size five — hand-checked to the same spec played on every elite pitch." delay={300} />
           </div>
-          <div className="flex flex-col gap-5 flex-1 min-w-0 sm:max-w-[250px]">
+          <div className="flex flex-col gap-3 md:gap-5 flex-1 min-w-0 sm:max-w-[250px]">
             <MeterCard label="FIRST TOUCH" pct={96} status="LOCKED" delay={400} />
             <MeterCard label="PASS ACCURACY" pct={94} status="ON TARGET" delay={500} />
             <MeterCard label="CROSS COMPLETION" pct={91} status="DELIVERED" delay={600} />
@@ -405,12 +405,12 @@ function StadiumSection({ product }) {
 
 function LimitedSection() {
   return (
-    <section data-stage="outro" className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 pt-32 md:pt-44 pb-16 md:pb-20 pointer-events-none snap-start overflow-hidden">
+    <section data-stage="outro" className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 pt-20 md:pt-44 pb-10 md:pb-20 pointer-events-none snap-start overflow-hidden">
       <div className="w-full relative z-10 pointer-events-auto">
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-8 md:mb-12">
           <div>
             <div className="text-xs font-mono text-brand-accent mb-2">RANK 01</div>
-            <h2 className="font-display text-6xl md:text-8xl text-white leading-[0.9] tracking-tight">
+            <h2 className="font-display text-5xl md:text-8xl text-white leading-[0.9] tracking-tight">
               THE
               <br />
               LEGEND
@@ -422,20 +422,20 @@ function LimitedSection() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-6">
+        <div className="grid md:grid-cols-3 gap-3 md:gap-6">
+          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6">
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Certified</div>
-            <h3 className="font-display text-2xl text-white mb-2">Gold Standard</h3>
+            <h3 className="font-display text-xl md:text-2xl text-white mb-2">Gold Standard</h3>
             <p className="text-xs text-gray-500 leading-relaxed">Regulation size and weight. Every ball hand-checked before it ships.</p>
           </div>
-          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-6" style={{ transitionDelay: '150ms' }}>
+          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6" style={{ transitionDelay: '150ms' }}>
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Next Level Performance</div>
-            <h3 className="font-display text-2xl text-white mb-2">Every Touch Counts</h3>
+            <h3 className="font-display text-xl md:text-2xl text-white mb-2">Every Touch Counts</h3>
             <p className="text-xs text-gray-500 leading-relaxed">Carved seams and pebbled leather keep the ball true in every climate.</p>
           </div>
-          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-6" style={{ transitionDelay: '300ms' }}>
+          <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6" style={{ transitionDelay: '300ms' }}>
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Heritage</div>
-            <h3 className="font-display text-2xl text-white mb-2">The Same Ball</h3>
+            <h3 className="font-display text-xl md:text-2xl text-white mb-2">The Same Ball</h3>
             <p className="text-xs text-gray-500 leading-relaxed">The same 32-panel silhouette that has defined world football for fifty years.</p>
           </div>
         </div>
@@ -572,7 +572,7 @@ export default function App() {
       <div
         ref={appRootRef}
         id="app-root"
-        className="relative w-full h-screen flex items-center justify-center overflow-hidden p-0 md:p-8 select-none"
+        className="relative w-full h-screen viewport-height flex items-center justify-center overflow-hidden p-0 md:p-8 select-none"
         style={{
           backgroundColor: product.bgColor,
           transition: 'background-color 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
