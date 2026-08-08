@@ -205,15 +205,15 @@ function HeroSection({ product, onPrev, onNext, onAddToCart, scrollRef }) {
 
 // ---------------------------------------------------------------- section: metrics
 
-function MetricStat({ value, unit, label, desc, delay }) {
+function MetricStat({ value, unit, label, desc, delay, right = false }) {
   return (
-    <div className="animate-item transition-all duration-1000 opacity-0 border-l border-white/20 pl-6" style={{ transitionDelay: `${delay}ms` }}>
+    <div className={`animate-item transition-all duration-1000 opacity-0 border-white/20 ${right ? 'border-r pr-6 text-right md:border-r-0 md:border-l md:pr-0 md:pl-6 md:text-left' : 'border-l pl-6'}`} style={{ transitionDelay: `${delay}ms` }}>
       <div className="text-4xl font-bold text-white mb-1">
         {value}
         {unit && <span className="text-lg text-gray-500">{unit}</span>}
       </div>
       <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">{label}</div>
-      <p className="text-xs text-gray-500 leading-relaxed max-w-[250px]">{desc}</p>
+      <p className={`text-xs text-gray-500 leading-relaxed max-w-[250px] ${right ? 'ml-auto' : ''}`}>{desc}</p>
     </div>
   )
 }
@@ -279,10 +279,12 @@ function TrueFlightSection() {
       data-stage="true"
       className="relative w-full h-full min-h-full flex items-end md:items-center justify-end px-6 md:px-20 py-12 md:py-20 pointer-events-none snap-start overflow-hidden"
     >
-      {/* text lives on the RIGHT half — the ball spins on the left */}
-      <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
+      {/* text lives on the RIGHT half — the ball spins on the left. Mobile: the
+          text column is right-aligned so it mirrors ELITE TOUCH and stays clear
+          of the ball parked on the left edge. */}
+      <div className="w-full md:w-1/2 relative z-10 pointer-events-auto text-right md:text-left">
         <div className="animate-item transition-all duration-1000 opacity-0" style={{ transitionDelay: '700ms' }}>
-          <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2">
+          <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2 justify-end md:justify-start">
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             IN THE AIR
           </div>
@@ -292,11 +294,11 @@ function TrueFlightSection() {
             FLIGHT
           </h2>
         </div>
-        {/* metrics + spec chips side by side */}
+        {/* metrics + spec chips side by side (mobile: full-width column hugging the right) */}
         <div className="mt-10 flex flex-col sm:flex-row gap-10 sm:gap-12 items-start">
-          <div className="space-y-8 flex-1 min-w-0">
-            <MetricStat value="45" unit=" M" label="Flight Range" desc="A driven ball that carries the length of the box and lands where the plan said it would." delay={800} />
-            <MetricStat value="480" unit=" RPM" label="Spin Rate" desc="Curve and dip built into the rotation — the ball bends late and drops over the wall." delay={900} />
+          <div className="space-y-8 flex-1 min-w-0 w-full sm:w-auto sm:flex-1">
+            <MetricStat value="45" unit=" M" label="Flight Range" desc="A driven ball that carries the length of the box and lands where the plan said it would." delay={800} right />
+            <MetricStat value="480" unit=" RPM" label="Spin Rate" desc="Curve and dip built into the rotation — the ball bends late and drops over the wall." delay={900} right />
           </div>
           <div className="animate-item transition-all duration-1000 opacity-0 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 flex-1 min-w-0 sm:max-w-[250px]" style={{ transitionDelay: '1000ms' }}>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[10px] font-mono text-gray-400 uppercase tracking-widest md:flex md:flex-col md:gap-y-2.5">
