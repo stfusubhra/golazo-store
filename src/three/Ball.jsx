@@ -119,6 +119,12 @@ export default function Ball({ product, scrollRef, configurator = false, shadowR
       // the third page is a centered "stadium night" shot — ball holds the stage
       const centerScale = portrait ? 0.8 : 1.25
       const centerY = -0.15
+      // Portrait keeps the two metric pages clear of the edge sliver: instead of
+      // sitting half-off the side (where it would sit UNDER the full-width text)
+      // the ball floats CENTERED in the open space above the bottom-pinned text.
+      // ELITE and TRUE FLIGHT share the exact same pose, keeping them symmetric.
+      const topScale = 0.6
+      const topPose = 1.5
       // THE LEGEND page keeps the ball CENTERED too, sitting just above the
       // heading — low enough to clear the sticky header, high enough to stay
       // in the open space so it never covers the text or the cards.
@@ -159,30 +165,45 @@ export default function Ball({ product, scrollRef, configurator = false, shadowR
           scale = lerp(portrait ? 1.1 : 1.5, sideScale, t)
         }
       } else if (w < T.start) {
-        // ---- ELITE TOUCH: text on the LEFT, the BIG ball SPINS half-off the RIGHT
-        // edge, then sweeps across to the LEFT edge, arriving posed for TRUE FLIGHT.
-        const p = clamp01((w - E.start) / (T.start - E.start))
-        if (p < 0.8) {
-          v.set(sideX, 0, 0)
-          scale = sideScale
+        // ---- ELITE TOUCH. Desktop: text on the LEFT, the BIG ball SPINS half-off
+        // the RIGHT edge, then sweeps across to the LEFT edge, arriving posed for
+        // TRUE FLIGHT. Portrait: the edge sliver would sit under the full-width
+        // text, so the ball floats centered in the open space above the text.
+        if (portrait) {
+          v.set(0, topPose, 0)
+          scale = topScale
           tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
         } else {
-          const t = ease((p - 0.8) / 0.2)
-          v.set(lerp(sideX, -sideX, t), 0, 0)
-          scale = sideScale
+          const p = clamp01((w - E.start) / (T.start - E.start))
+          if (p < 0.8) {
+            v.set(sideX, 0, 0)
+            scale = sideScale
+            tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
+          } else {
+            const t = ease((p - 0.8) / 0.2)
+            v.set(lerp(sideX, -sideX, t), 0, 0)
+            scale = sideScale
+          }
         }
       } else if (w < C.start) {
-        // ---- TRUE FLIGHT: text on the RIGHT, the BIG ball SPINS half-off the LEFT
-        // edge, then glides to center, shrinking to the stadium shot.
-        const p = clamp01((w - T.start) / (C.start - T.start))
-        if (p < 0.8) {
-          v.set(-sideX, 0, 0)
-          scale = sideScale
+        // ---- TRUE FLIGHT. Desktop: text on the RIGHT, the BIG ball SPINS half-off
+        // the LEFT edge, then glides to center, shrinking to the stadium shot.
+        // Portrait: same centered-top pose as ELITE TOUCH — symmetric pair.
+        if (portrait) {
+          v.set(0, topPose, 0)
+          scale = topScale
           tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
         } else {
-          const t = ease((p - 0.8) / 0.2)
-          v.set(lerp(-sideX, 0, t), lerp(0, centerY, t), 0)
-          scale = lerp(sideScale, centerScale, t)
+          const p = clamp01((w - T.start) / (C.start - T.start))
+          if (p < 0.8) {
+            v.set(-sideX, 0, 0)
+            scale = sideScale
+            tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
+          } else {
+            const t = ease((p - 0.8) / 0.2)
+            v.set(lerp(-sideX, 0, t), lerp(0, centerY, t), 0)
+            scale = lerp(sideScale, centerScale, t)
+          }
         }
       } else if (w < exitStart) {
         // ---- THIRD PAGE (stadium night): the ball holds center stage. The

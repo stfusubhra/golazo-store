@@ -239,7 +239,7 @@ function EliteTouchSection() {
   return (
     <section
       data-stage="elite"
-      className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 py-12 md:py-20 pointer-events-none snap-start overflow-hidden"
+      className="relative w-full h-full min-h-full flex items-end md:items-center px-6 md:px-20 py-12 md:py-20 pointer-events-none snap-start overflow-hidden"
     >
       {/* text lives on the LEFT half — the ball spins on the right */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
@@ -277,7 +277,7 @@ function TrueFlightSection() {
   return (
     <section
       data-stage="true"
-      className="relative w-full h-full min-h-full flex items-center justify-end px-6 md:px-20 py-20 pointer-events-none snap-start overflow-hidden"
+      className="relative w-full h-full min-h-full flex items-end md:items-center justify-end px-6 md:px-20 py-12 md:py-20 pointer-events-none snap-start overflow-hidden"
     >
       {/* text lives on the RIGHT half — the ball spins on the left */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
@@ -299,7 +299,7 @@ function TrueFlightSection() {
             <MetricStat value="480" unit=" RPM" label="Spin Rate" desc="Curve and dip built into the rotation — the ball bends late and drops over the wall." delay={900} />
           </div>
           <div className="animate-item transition-all duration-1000 opacity-0 translate-y-10 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 flex-1 min-w-0 sm:max-w-[250px]" style={{ transitionDelay: '1000ms' }}>
-            <div className="flex flex-col gap-y-2.5 text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[10px] font-mono text-gray-400 uppercase tracking-widest md:flex md:flex-col md:gap-y-2.5">
               <span>
                 TAKEOFF SPEED <span className="text-white">104 KM/H</span>
               </span>
