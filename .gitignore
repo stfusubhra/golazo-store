@@ -4,3 +4,5 @@ dist
 *.local
 .ruff_cache
 .opencode-router
+.vercel
+.env*
