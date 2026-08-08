@@ -31,7 +31,7 @@ export default function Navbar({ cartCount = 0, onCustomize, onOpenCart, onProdu
   }
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-10 py-6 md:py-8 w-full pointer-events-none">
+    <nav className="absolute top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 py-6 md:py-8 w-full pointer-events-none">
       {/* logo */}
       <div className="flex items-center gap-2 pointer-events-auto">
         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">

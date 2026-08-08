@@ -595,22 +595,22 @@ export default function App() {
           <BackgroundTitle product={product} scrollRef={scrollRef} />
           <Scene product={product} scrollRef={scrollRef} appRootRef={appRootRef} addToCartTrigger={addToCartTrigger} />
 
+          <Navbar
+            cartCount={cart.length}
+            onCustomize={() => {
+              setCustomizeOpen(true)
+              playClick()
+            }}
+            onOpenCart={() => {
+              setCartOpen(true)
+              playClick()
+            }}
+            onProducts={scrollToTop}
+            onContacts={scrollToFooter}
+          />
+
           {/* scrollable content */}
           <div ref={scrollRef} className="absolute inset-0 z-30 w-full h-full overflow-y-auto overflow-x-hidden scroll-smooth no-scrollbar snap-y snap-mandatory">
-            <Navbar
-              cartCount={cart.length}
-              onCustomize={() => {
-                setCustomizeOpen(true)
-                playClick()
-              }}
-              onOpenCart={() => {
-                setCartOpen(true)
-                playClick()
-              }}
-              onProducts={scrollToTop}
-              onContacts={scrollToFooter}
-            />
-
             <HeroSection
               product={product}
               onPrev={prev}
