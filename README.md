@@ -33,6 +33,8 @@ npm run preview  # serves the production build on :4173
 
 ## Deploy
 
-Push to GitHub and import the repo into Vercel — the Vite framework preset is auto-detected (build `npm run build`, output `dist`). No environment variables required.
+**Live: https://golazo-store-two.vercel.app** (auto-deploys from `main` via the Vercel GitHub integration)
+
+Push to GitHub and import the repo into Vercel — the Vite framework preset is auto-detected (build `npm run build`, output `dist`). No environment variables required. The project is linked to this repo, so pushes to `main` deploy automatically.
 
 The production bundle is split into stable vendor chunks (`three`, `react`, `gsap`) for parallel loading and long-term caching.
