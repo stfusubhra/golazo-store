@@ -119,12 +119,9 @@ export default function Ball({ product, scrollRef, configurator = false, shadowR
       // the third page is a centered "stadium night" shot — ball holds the stage
       const centerScale = portrait ? 0.8 : 1.25
       const centerY = -0.15
-      // Portrait keeps the two metric pages clear of the edge sliver: instead of
-      // sitting half-off the side (where it would sit UNDER the full-width text)
-      // the ball floats CENTERED in the open space above the bottom-pinned text.
-      // ELITE and TRUE FLIGHT share the exact same pose, keeping them symmetric.
-      const topScale = 0.6
-      const topPose = 1.5
+      // Portrait keeps the metric pages readable: the ball parks half-off the
+      // side edge exactly like desktop (ELITE right / TRUE FLIGHT left — a
+      // mirrored pair), sized so it clears the bottom-pinned text below it.
       // THE LEGEND page keeps the ball CENTERED too, sitting just above the
       // heading — low enough to clear the sticky header, high enough to stay
       // in the open space so it never covers the text or the cards.
@@ -170,8 +167,8 @@ export default function Ball({ product, scrollRef, configurator = false, shadowR
         // TRUE FLIGHT. Portrait: the edge sliver would sit under the full-width
         // text, so the ball floats centered in the open space above the text.
         if (portrait) {
-          v.set(0, topPose, 0)
-          scale = topScale
+          v.set(sideX, 0, 0)
+          scale = 0.75
           tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
         } else {
           const p = clamp01((w - E.start) / (T.start - E.start))
@@ -190,8 +187,8 @@ export default function Ball({ product, scrollRef, configurator = false, shadowR
         // the LEFT edge, then glides to center, shrinking to the stadium shot.
         // Portrait: same centered-top pose as ELITE TOUCH — symmetric pair.
         if (portrait) {
-          v.set(0, topPose, 0)
-          scale = topScale
+          v.set(-sideX, 0, 0)
+          scale = 0.75
           tumble = Math.sin(state.clock.elapsedTime * 1.6) * 0.12
         } else {
           const p = clamp01((w - T.start) / (C.start - T.start))

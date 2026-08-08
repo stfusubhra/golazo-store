@@ -49,7 +49,13 @@ body {
   scrollbar-width: none;
 }
 
-/* reveal-on-scroll helpers */
+/* reveal-on-scroll helpers
+   NOTE: do NOT combine .animate-item with Tailwind v4 translate utilities
+   (translate-y-10 / -translate-x-10). Those utilities set the `translate`
+   property, which is INDEPENDENT of `transform` — the reveal below can't clear
+   it (the CSS minifier even strips `translate: none` as a "no-op"), so elements
+   would stay stuck 40px off (stats drift down over their neighbours, cards
+   drift off-screen). The reveal only animates opacity + transform. */
 .animate-item {
   opacity: 0;
   transform: translateY(30px);

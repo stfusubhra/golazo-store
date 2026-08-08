@@ -207,7 +207,7 @@ function HeroSection({ product, onPrev, onNext, onAddToCart, scrollRef }) {
 
 function MetricStat({ value, unit, label, desc, delay }) {
   return (
-    <div className="animate-item transition-all duration-1000 opacity-0 translate-y-10 border-l border-white/20 pl-6" style={{ transitionDelay: `${delay}ms` }}>
+    <div className="animate-item transition-all duration-1000 opacity-0 border-l border-white/20 pl-6" style={{ transitionDelay: `${delay}ms` }}>
       <div className="text-4xl font-bold text-white mb-1">
         {value}
         {unit && <span className="text-lg text-gray-500">{unit}</span>}
@@ -220,7 +220,7 @@ function MetricStat({ value, unit, label, desc, delay }) {
 
 function MeterCard({ label, pct, status, delay }) {
   return (
-    <div className="animate-item transition-all duration-1000 opacity-0 -translate-x-10 p-3 md:p-4 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg flex-1 min-w-0 md:flex-none md:max-w-[220px]" style={{ transitionDelay: `${delay}ms` }}>
+    <div className="animate-item transition-all duration-1000 opacity-0 p-3 md:p-4 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg flex-1 min-w-0 md:flex-none md:max-w-[220px]" style={{ transitionDelay: `${delay}ms` }}>
       <div className="text-[10px] text-gray-400 font-mono mb-2 truncate">{label}</div>
       <div className="w-full h-1 bg-gray-700 rounded-full mb-2 overflow-hidden">
         <div className="h-full bg-white" style={{ width: `${pct}%` }} />
@@ -243,7 +243,7 @@ function EliteTouchSection() {
     >
       {/* text lives on the LEFT half — the ball spins on the right */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
-        <div className="animate-item transition-all duration-1000 opacity-0 translate-y-10" style={{ transitionDelay: '100ms' }}>
+        <div className="animate-item transition-all duration-1000 opacity-0" style={{ transitionDelay: '100ms' }}>
           <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             PERFORMANCE METRICS
@@ -281,7 +281,7 @@ function TrueFlightSection() {
     >
       {/* text lives on the RIGHT half — the ball spins on the left */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
-        <div className="animate-item transition-all duration-1000 opacity-0 translate-y-10" style={{ transitionDelay: '700ms' }}>
+        <div className="animate-item transition-all duration-1000 opacity-0" style={{ transitionDelay: '700ms' }}>
           <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             IN THE AIR
@@ -298,7 +298,7 @@ function TrueFlightSection() {
             <MetricStat value="45" unit=" M" label="Flight Range" desc="A driven ball that carries the length of the box and lands where the plan said it would." delay={800} />
             <MetricStat value="480" unit=" RPM" label="Spin Rate" desc="Curve and dip built into the rotation — the ball bends late and drops over the wall." delay={900} />
           </div>
-          <div className="animate-item transition-all duration-1000 opacity-0 translate-y-10 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 flex-1 min-w-0 sm:max-w-[250px]" style={{ transitionDelay: '1000ms' }}>
+          <div className="animate-item transition-all duration-1000 opacity-0 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 flex-1 min-w-0 sm:max-w-[250px]" style={{ transitionDelay: '1000ms' }}>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[10px] font-mono text-gray-400 uppercase tracking-widest md:flex md:flex-col md:gap-y-2.5">
               <span>
                 TAKEOFF SPEED <span className="text-white">104 KM/H</span>
@@ -377,7 +377,7 @@ function StadiumSection({ product }) {
       />
 
       {/* upper-left caption (below the sticky nav) */}
-      <div className="absolute left-6 md:left-16 top-36 md:top-40 max-w-[230px] animate-item transition-all duration-1000 opacity-0 translate-y-10">
+      <div className="absolute left-6 md:left-16 top-36 md:top-40 max-w-[230px] animate-item transition-all duration-1000 opacity-0">
         <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-brand-accent" />
           MATCH NIGHT
@@ -388,7 +388,7 @@ function StadiumSection({ product }) {
       </div>
 
       {/* lower-right caption */}
-      <div className="absolute right-6 md:right-16 bottom-32 md:bottom-36 max-w-[230px] text-right animate-item transition-all duration-1000 opacity-0 translate-y-10">
+      <div className="absolute right-6 md:right-16 bottom-32 md:bottom-36 max-w-[230px] text-right animate-item transition-all duration-1000 opacity-0">
         <div className="text-xs font-mono text-brand-accent mb-2 flex items-center gap-2 justify-end">
           GAME READY
           <span className="w-2 h-2 rounded-full bg-brand-accent" />
