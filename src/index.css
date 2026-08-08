@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #050505;
+  --color-brand-gray: #1f1f1f;
+  --color-brand-accent: #ffc300;
+
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --shadow-glow: 0 0 20px rgba(255, 195, 0, 0.35);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- custom cursor (src/components/CursorBoot.jsx) ---- */
+/* hide the native pointer on fine-pointer devices; the dot+ring replaces it */
+@media (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
+/* touch / coarse pointers have no hover cursor — keep the dot+ring hidden */
+@media (pointer: coarse) {
+  .cursor-slam {
+    display: none !important;
+  }
+}
+
+/* hide scrollbars inside the snap container */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* reveal-on-scroll helpers */
+.animate-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+.animate-item.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* overlay / drawer / modal animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  from {
+    transform: translateY(24px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
