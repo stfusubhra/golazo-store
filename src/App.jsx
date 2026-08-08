@@ -220,12 +220,12 @@ function MetricStat({ value, unit, label, desc, delay }) {
 
 function MeterCard({ label, pct, status, delay }) {
   return (
-    <div className="animate-item transition-all duration-1000 opacity-0 -translate-x-10 p-4 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg max-w-[220px]" style={{ transitionDelay: `${delay}ms` }}>
-      <div className="text-[10px] text-gray-400 font-mono mb-2">{label}</div>
+    <div className="animate-item transition-all duration-1000 opacity-0 -translate-x-10 p-3 md:p-4 border border-white/10 bg-black/40 backdrop-blur-md rounded-lg flex-1 min-w-0 md:flex-none md:max-w-[220px]" style={{ transitionDelay: `${delay}ms` }}>
+      <div className="text-[10px] text-gray-400 font-mono mb-2 truncate">{label}</div>
       <div className="w-full h-1 bg-gray-700 rounded-full mb-2 overflow-hidden">
         <div className="h-full bg-white" style={{ width: `${pct}%` }} />
       </div>
-      <div className="flex justify-between text-white font-bold text-sm">
+      <div className="flex justify-between text-white font-bold text-xs md:text-sm">
         <span>{pct}%</span>
         <span>{status}</span>
       </div>
@@ -239,7 +239,7 @@ function EliteTouchSection() {
   return (
     <section
       data-stage="elite"
-      className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 py-10 md:py-20 pointer-events-none snap-start overflow-hidden"
+      className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 py-12 md:py-20 pointer-events-none snap-start overflow-hidden"
     >
       {/* text lives on the LEFT half — the ball spins on the right */}
       <div className="w-full md:w-1/2 relative z-10 pointer-events-auto">
@@ -248,19 +248,19 @@ function EliteTouchSection() {
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             PERFORMANCE METRICS
           </div>
-          <h2 className="font-display text-4xl md:text-7xl text-white leading-[0.9] tracking-tight">
+          <h2 className="font-display text-3xl md:text-7xl text-white leading-[0.9] tracking-tight">
             ELITE
             <br />
             TOUCH
           </h2>
         </div>
         {/* the 32-panel text and the percentage bars sit SIDE BY SIDE */}
-        <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
-          <div className="space-y-6 md:space-y-8 flex-1 min-w-0">
+        <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-8 sm:gap-12 items-start">
+          <div className="space-y-8 flex-1 min-w-0">
             <MetricStat value="110" unit=" KM/H" label="Shot Speed" desc="Struck clean, the classic 32-panel tops a century of pace without deviating a centimetre." delay={200} />
             <MetricStat value="68.5" unit=" CM" label="Circumference" desc="Regulation size five — hand-checked to the same spec played on every elite pitch." delay={300} />
           </div>
-          <div className="flex flex-col gap-3 md:gap-5 flex-1 min-w-0 sm:max-w-[250px]">
+          <div className="flex flex-row gap-2 md:flex-col md:gap-5 w-full md:w-auto flex-1 min-w-0 sm:max-w-[250px]">
             <MeterCard label="FIRST TOUCH" pct={96} status="LOCKED" delay={400} />
             <MeterCard label="PASS ACCURACY" pct={94} status="ON TARGET" delay={500} />
             <MeterCard label="CROSS COMPLETION" pct={91} status="DELIVERED" delay={600} />
@@ -286,14 +286,14 @@ function TrueFlightSection() {
             <span className="w-2 h-2 rounded-full bg-brand-accent" />
             IN THE AIR
           </div>
-          <h2 className="font-display text-5xl md:text-7xl text-white leading-[0.9] tracking-tight">
+          <h2 className="font-display text-4xl md:text-7xl text-white leading-[0.9] tracking-tight">
             TRUE
             <br />
             FLIGHT
           </h2>
         </div>
         {/* metrics + spec chips side by side */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-8 sm:gap-12 items-start">
+        <div className="mt-10 flex flex-col sm:flex-row gap-10 sm:gap-12 items-start">
           <div className="space-y-8 flex-1 min-w-0">
             <MetricStat value="45" unit=" M" label="Flight Range" desc="A driven ball that carries the length of the box and lands where the plan said it would." delay={800} />
             <MetricStat value="480" unit=" RPM" label="Spin Rate" desc="Curve and dip built into the rotation — the ball bends late and drops over the wall." delay={900} />
@@ -407,10 +407,10 @@ function LimitedSection() {
   return (
     <section data-stage="outro" className="relative w-full h-full min-h-full flex items-center px-6 md:px-20 pt-20 md:pt-44 pb-10 md:pb-20 pointer-events-none snap-start overflow-hidden">
       <div className="w-full relative z-10 pointer-events-auto">
-        <div className="flex items-end justify-between mb-8 md:mb-12">
+        <div className="flex items-end justify-between mb-10 md:mb-12">
           <div>
             <div className="text-xs font-mono text-brand-accent mb-2">RANK 01</div>
-            <h2 className="font-display text-5xl md:text-8xl text-white leading-[0.9] tracking-tight">
+            <h2 className="font-display text-4xl md:text-8xl text-white leading-[0.9] tracking-tight">
               THE
               <br />
               LEGEND
@@ -422,20 +422,20 @@ function LimitedSection() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-3 md:gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6">
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Certified</div>
-            <h3 className="font-display text-xl md:text-2xl text-white mb-2">Gold Standard</h3>
+            <h3 className="font-display text-lg md:text-2xl text-white mb-2">Gold Standard</h3>
             <p className="text-xs text-gray-500 leading-relaxed">Regulation size and weight. Every ball hand-checked before it ships.</p>
           </div>
           <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6" style={{ transitionDelay: '150ms' }}>
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Next Level Performance</div>
-            <h3 className="font-display text-xl md:text-2xl text-white mb-2">Every Touch Counts</h3>
+            <h3 className="font-display text-lg md:text-2xl text-white mb-2">Every Touch Counts</h3>
             <p className="text-xs text-gray-500 leading-relaxed">Carved seams and pebbled leather keep the ball true in every climate.</p>
           </div>
           <div className="animate-item border border-white/10 bg-black/40 backdrop-blur-md rounded-lg p-4 md:p-6" style={{ transitionDelay: '300ms' }}>
             <div className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-3">Heritage</div>
-            <h3 className="font-display text-xl md:text-2xl text-white mb-2">The Same Ball</h3>
+            <h3 className="font-display text-lg md:text-2xl text-white mb-2">The Same Ball</h3>
             <p className="text-xs text-gray-500 leading-relaxed">The same 32-panel silhouette that has defined world football for fifty years.</p>
           </div>
         </div>
