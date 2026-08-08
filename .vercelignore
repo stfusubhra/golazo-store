@@ -1,0 +1,7 @@
+dist
+node_modules
+.opencode
+.opencode-router
+.ruff_cache
+.DS_Store
+*.local
